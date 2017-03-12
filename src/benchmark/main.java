@@ -56,11 +56,21 @@ public class main {
 		return totalsum;
 		
 	}
-	public static int pow(int base, int pow) {
-		int retn=1;
-		for(int i=0;i<pow;i++) {
-			retn *=base;
-		}
-		return retn;
-	}
+	
+    public static int pow(int base, int exp) {
+        if (exp == 0) return 1;
+        if (exp == 1) return base;
+        if (exp == 2) return base * base;
+        if (exp == 3) return base * base * base;
+        int result = 1;
+        while (exp) {
+            // lowest order bit
+            if (exp & 1)
+                result *= base;
+            exp >>= 1;
+            base *= base;
+        }
+
+        return result;
+    }
 }
