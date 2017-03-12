@@ -6,12 +6,14 @@ public class main {
 
 	public static void main(String[] args) {
 
+		final trials = 1000;
+		
 		Random rand = new Random();
 
-		int[][] array = new int[100][8];
+		int[][] array = new int[trials][8];
 
 		for (int k = 0; k < 10; k++) {
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < trials; i++) {
 				for (int j = 0; j < 8; j++) {
 					array[i][j] = rand.nextInt();
 				}
@@ -19,7 +21,7 @@ public class main {
 
 			long start = System.nanoTime();
 
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < trials; i++) {
 				double d = getValue(array[i][0], array[i][1], array[i][2], array[i][3], array[i][4], array[i][5],
 						array[i][6], array[i][7]);
 
@@ -28,7 +30,7 @@ public class main {
 			}
 
 			long elapsed = System.nanoTime() - start;
-			System.out.println(elapsed);
+			System.out.println(((double) elapsed) / trials);
 		}
 
 	}
