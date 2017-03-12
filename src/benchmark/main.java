@@ -63,9 +63,9 @@ public class main {
         if (exp == 2) return base * base;
         if (exp == 3) return base * base * base;
         int result = 1;
-        while (exp) {
+        while (exp != 0) {
             // lowest order bit
-            if (exp & 1)
+            if ((exp & 1) == 1)
                 result *= base;
             exp >>= 1;
             base *= base;
