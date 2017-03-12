@@ -49,59 +49,11 @@ public class main {
 
 	}
 
-	public static int pow(int base, int exp) {
-		// hardcode cases for exp 0 to 10
-		if (exp < 0)
-			throw new RuntimeException();
-		if (exp == 0)
-			return 1;
-		if (exp == 1)
-			return base;
-		if (exp == 2)
-			return base * base;
-		if (exp == 3)
-			return base * base * base;
-		if (exp == 4) {
-			int t = base * base;
-			return t * t;
-		}
-		if(exp == 5) {
-			int t = base * base;
-			return t * t * base;
-		}
-		if(exp == 6) {
-			int t = base * base;
-			return t * t * t;
-		}
-		if(exp == 7) {
-			int t = base * base;
-			return t * t * t * base;
-		}
-		if(exp == 8) {
-			int t = base * base;
-			int u = t * t;
-			return u * u;
-		}
-		if(exp == 9) {
-			int t = base * base;
-			int u = t * t;
-			return u * u * base;
-		}
-		if(exp == 10) {
-			int t = base * base;
-			int u = t * t;
-			return u * u * t;
-		}
-		
-		int result = 1;
-		while (exp != 0) {
-			// lowest order bit
-			if ((exp & 1) == 1)
-				result *= base;
-			exp >>= 1;
-			base *= base;
-		}
-
-		return result;
-	}
+	public static int pow(int base, int pow) {
+ 		int retn=1;
+ 		for(int i=0;i<pow;i++) {
+ 			retn *=base;
+ 		}
+ 		return retn;
+ 	}
 }
