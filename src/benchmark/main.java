@@ -25,11 +25,7 @@ public class main {
 		for(int i=0;i<100;i++) {
 			double d = getValue(array[i][0],array[i][1],array[i][2],array[i][3],array[i][4],array[i][5],array[i][6],array[i][7]);
 			
-			try {
-				if(d==Double.NaN) throw new Exception();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			if(d==Double.NaN) throw new RuntimeException();
 		}
 		
 		double elapsed = System.nanoTime()-start;
@@ -43,10 +39,12 @@ public class main {
 		for(int i=0;i<10;i++) {
 			double tosum;
 			tosum = (1/pow(10,i))*
+					(double)
 					(a*i*i
 					+b*i
 					+c)
 					/
+					(double)
 					(d*i*i*i*i
 					+e*i*i*i
 					+f*i*i
