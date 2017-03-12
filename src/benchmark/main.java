@@ -7,29 +7,15 @@ public class main {
 	public static void main(String[] args) {
 
 		final int trials = 10000000;
+		final int outertrials = 5;
 		
 		Random rand = new Random();
 
 		int[][] array = new int[trials][8];
-
-		for (int i = 0; i < trials; i++) {
-			for (int j = 0; j < 8; j++) {
-				array[i][j] = rand.nextInt();
-			}
-		}
 		
+		double timesum = 0;
 		
-		//warmup
-		for (int i = 0; i < trials; i++) {
-			double d = getValue(array[i][0], array[i][1], array[i][2], array[i][3], array[i][4], array[i][5],
-					array[i][6], array[i][7]);
-
-			if (d == Double.NaN)
-				throw new RuntimeException();
-		}
-		
-		//real thing
-		for (int k = 0; k < 20; k++) {
+		for (int k = 0; k < outertrials; k++) {
 			for (int i = 0; i < trials; i++) {
 				for (int j = 0; j < 8; j++) {
 					array[i][j] = rand.nextInt();
@@ -47,8 +33,16 @@ public class main {
 			}
 
 			long elapsed = System.nanoTime() - start;
-			System.out.println(((double) elapsed) / trials);
+			
+			// dont count warmup
+			if(k > 1)
+				timesum += (((double) elapsed) / trials);
 		}
+		
+		// compute average
+		double avgtime = timesum / (outertrials - 2);
+		
+		System.out.println(avgtime);
 
 	}
 
