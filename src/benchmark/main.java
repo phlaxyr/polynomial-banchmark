@@ -25,11 +25,12 @@ public class main {
 			long start = System.nanoTime();
 
 			for (int i = 0; i < trials; i++) {
-				boolean d = getValue(array[i][0], array[i][1], array[i][2], array[i][3], array[i][4], array[i][5],
+				boolean d = isPiLike(array[i][0], array[i][1], array[i][2], array[i][3], array[i][4], array[i][5],
 						array[i][6], array[i][7]);
 
 				if (d)
-					throw new RuntimeException();
+					System.out.println(" "+getValue(array[i][0], array[i][1], array[i][2], array[i][3], array[i][4], array[i][5],
+						array[i][6], array[i][7]));
 			}
 
 			long elapsed = System.nanoTime() - start;
@@ -46,20 +47,26 @@ public class main {
 
 	}
 
-	public static boolean getValue(int a, int b, int c, int d, int e, int f, int g, int h) {
+	public static boolean isPiLike(int a, int b, int c, int d, int e, int f, int g, int h) {
+
+		double totalsum = getValue(a,b,c,d,e,f,g,h);
+		return (totalsum < 3.142) && (totalsum > 3.141);
+
+	}
+	public static double getValue(int a, int b, int c, int d, int e, int f, int g, int h) {
 
 		double totalsum = 0;
 		for (int i = 0; i < 4; i++) {
 			double tosum;
 			tosum = (double) (a * i * i + b * i + c)
-					/ (double) ((d * i * i * i * i + e * i * i * i + f * i * i + g * i + h) * powb(i));
+					/ (double) ((d * i * i * i * i + e * i * i * i + f * i * i + g * i + h) * powb10(i));
 			totalsum += tosum;
 			// the indention is beautiful
 		}
-		return (totalsum < 3.142) && (totalsum > 3.141);
+		return totalsum;
 
 	}
-
+	
 	public static int powb10(int exp) {
 		switch(exp) {
 			case 0:
