@@ -49,10 +49,10 @@ public class main {
 	public static double getValue(int a, int b, int c, int d, int e, int f, int g, int h) {
 
 		double totalsum = 0;
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 4; i++) {
 			double tosum;
-			tosum = (1 / powb10(i)) * (double) (a * i * i + b * i + c)
-					/ (double) (d * i * i * i * i + e * i * i * i + f * i * i + g * i + h);
+			tosum = (double) (a * i * i + b * i + c)
+					/ (double) ((d * i * i * i * i + e * i * i * i + f * i * i + g * i + h) * powb(i));
 			totalsum += tosum;
 			// the indention is beautiful
 		}
