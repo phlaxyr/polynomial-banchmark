@@ -49,10 +49,10 @@ public class main {
 	public static double getValue(int a, int b, int c, int d, int e, int f, int g, int h) {
 
 		double totalsum = 0;
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 4; i++) {
 			double tosum;
-			tosum = (1 / pow(10, i)) * (double) (a * i * i + b * i + c)
-					/ (double) (d * i * i * i * i + e * i * i * i + f * i * i + g * i + h);
+			tosum = (double) (a * i * i + b * i + c)
+					/ (double) ((d * i * i * i * i + e * i * i * i + f * i * i + g * i + h) * powb(i));
 			totalsum += tosum;
 			// the indention is beautiful
 		}
@@ -60,6 +60,33 @@ public class main {
 
 	}
 
+	public static int powb10(int exp) {
+		switch(exp) {
+			case 0:
+				return 1;
+			case 1:
+				return 10;
+			case 2: 
+				return 100;
+			case 3: 
+				return 1000;
+			case 4: 
+				return 10000;
+			case 5: 
+				return 100000;
+			case 6:
+				return 1000000;
+			case 7:
+				return 10000000;
+			case 8:
+				return 100000000;
+			case 9:
+				return 1000000000;
+			default:
+				throw new RuntimeException();
+		}
+	}
+	
 	public static int pow(int base, int exp) {
 		// hardcode cases for exp 0 to 10
 		if (exp < 0)
