@@ -25,10 +25,10 @@ public class main {
 			long start = System.nanoTime();
 
 			for (int i = 0; i < trials; i++) {
-				double d = getValue(array[i][0], array[i][1], array[i][2], array[i][3], array[i][4], array[i][5],
+				boolean d = getValue(array[i][0], array[i][1], array[i][2], array[i][3], array[i][4], array[i][5],
 						array[i][6], array[i][7]);
 
-				if (d == Double.NaN)
+				if (d)
 					throw new RuntimeException();
 			}
 
@@ -46,7 +46,7 @@ public class main {
 
 	}
 
-	public static double getValue(int a, int b, int c, int d, int e, int f, int g, int h) {
+	public static boolean getValue(int a, int b, int c, int d, int e, int f, int g, int h) {
 
 		double totalsum = 0;
 		for (int i = 0; i < 4; i++) {
@@ -56,7 +56,7 @@ public class main {
 			totalsum += tosum;
 			// the indention is beautiful
 		}
-		return totalsum;
+		return (totalsum < 3.142) && (totalsum > 3.141);
 
 	}
 
