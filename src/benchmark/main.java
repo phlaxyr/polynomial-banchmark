@@ -48,9 +48,9 @@ public class main {
 	}
 
 	public static boolean isPiLike(int a, int b, int c, int d, int e, int f, int g, int h) {
-
+		final double threshold = 0.0001;
 		double totalsum = getValue(a,b,c,d,e,f,g,h);
-		return (totalsum < 3.142) && (totalsum > 3.141);
+		return (totalsum < Math.PI + threshold) && (totalsum > Math.PI - threshold);
 
 	}
 	public static double getValue(int a, int b, int c, int d, int e, int f, int g, int h) {
