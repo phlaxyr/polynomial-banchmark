@@ -25,12 +25,11 @@ public class main {
 			long start = System.nanoTime();
 
 			for (int i = 0; i < trials; i++) {
-				boolean d = isPiLike(array[i][0], array[i][1], array[i][2], array[i][3], array[i][4], array[i][5],
+				double d = getValue(array[i][0], array[i][1], array[i][2], array[i][3], array[i][4], array[i][5],
 						array[i][6], array[i][7]);
 
-				if (d)
-					System.out.println(" "+getValue(array[i][0], array[i][1], array[i][2], array[i][3], array[i][4], array[i][5],
-						array[i][6], array[i][7]));
+				if (isPiLike(d)) 
+					System.out.println(" "+d);
 			}
 
 			long elapsed = System.nanoTime() - start;
@@ -52,6 +51,10 @@ public class main {
 		double totalsum = getValue(a,b,c,d,e,f,g,h);
 		return (totalsum < Math.PI + threshold) && (totalsum > Math.PI - threshold);
 
+	}
+	public static boolean isPiLike(double totalsum) {
+		final double threshold = 0.0001;
+		return (totalsum < Math.PI + threshold) && (totalsum > Math.PI - threshold);
 	}
 	public static double getValue(int a, int b, int c, int d, int e, int f, int g, int h) {
 
